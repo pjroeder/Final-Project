@@ -1,0 +1,174 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Player/Player.gd" type="Script" id=1]
+
+[sub_resource type="PlaneMesh" id=1]
+size = Vector2( 200, 100 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.32549, 0.305882, 0.305882, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=13]
+points = PoolVector3Array( 100, 0, 50, -100, 0, 50, 100, 0, -50, -100, 0, -50 )
+
+[sub_resource type="CubeMesh" id=6]
+size = Vector3( 100, 6, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=7]
+points = PoolVector3Array( -50, 3, 0.5, 50, 3, -0.5, 50, 3, 0.5, -50, 3, -0.5, -50, -3, 0.5, 50, -3, -0.5, 50, -3, 0.5, -50, -3, -0.5, 50, 3, 0.5, -50, 3, -0.5, 50, 3, -0.5, -50, 3, 0.5, 50, -3, 0.5, -50, -3, -0.5, 50, -3, -0.5, -50, -3, 0.5, 50, 3, 0.5, -50, -3, 0.5, -50, 3, 0.5, 50, -3, 0.5, 50, 3, -0.5, -50, -3, -0.5, -50, 3, -0.5, 50, -3, -0.5 )
+
+[sub_resource type="ConvexPolygonShape" id=8]
+points = PoolVector3Array( -50, 3, 0.5, 50, 3, -0.5, 50, 3, 0.5, -50, 3, -0.5, -50, -3, 0.5, 50, -3, -0.5, 50, -3, 0.5, -50, -3, -0.5, 50, 3, 0.5, -50, 3, -0.5, 50, 3, -0.5, -50, 3, 0.5, 50, -3, 0.5, -50, -3, -0.5, 50, -3, -0.5, -50, -3, 0.5, 50, 3, 0.5, -50, -3, 0.5, -50, 3, 0.5, 50, -3, 0.5, 50, 3, -0.5, -50, -3, -0.5, -50, 3, -0.5, 50, -3, -0.5 )
+
+[sub_resource type="CubeMesh" id=9]
+size = Vector3( 1, 6, 10 )
+
+[sub_resource type="ConvexPolygonShape" id=10]
+points = PoolVector3Array( -0.5, 3, 5, 0.5, 3, -5, 0.5, 3, 5, -0.5, 3, -5, -0.5, -3, 5, 0.5, -3, -5, 0.5, -3, 5, -0.5, -3, -5, 0.5, 3, 5, -0.5, 3, -5, 0.5, 3, -5, -0.5, 3, 5, 0.5, -3, 5, -0.5, -3, -5, 0.5, -3, -5, -0.5, -3, 5, 0.5, 3, 5, -0.5, -3, 5, -0.5, 3, 5, 0.5, -3, 5, 0.5, 3, -5, -0.5, -3, -5, -0.5, 3, -5, 0.5, -3, -5 )
+
+[sub_resource type="CubeMesh" id=11]
+size = Vector3( 25, 6, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=12]
+points = PoolVector3Array( -12.5, 3, 0.5, 12.5, 3, -0.5, 12.5, 3, 0.5, -12.5, 3, -0.5, -12.5, -3, 0.5, 12.5, -3, -0.5, 12.5, -3, 0.5, -12.5, -3, -0.5, 12.5, 3, 0.5, -12.5, 3, -0.5, 12.5, 3, -0.5, -12.5, 3, 0.5, 12.5, -3, 0.5, -12.5, -3, -0.5, 12.5, -3, -0.5, -12.5, -3, 0.5, 12.5, 3, 0.5, -12.5, -3, 0.5, -12.5, 3, 0.5, 12.5, -3, 0.5, 12.5, 3, -0.5, -12.5, -3, -0.5, -12.5, 3, -0.5, 12.5, -3, -0.5 )
+
+[sub_resource type="CapsuleShape" id=4]
+radius = 0.5
+height = 1.5
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 0.5, 0.1, 0.5 )
+
+[node name="Game" type="Spatial"]
+
+[node name="Maze" type="Spatial" parent="."]
+
+[node name="Ground" type="StaticBody" parent="Maze"]
+
+[node name="MeshInstance" type="MeshInstance" parent="Maze/Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 47.9073, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Maze/Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 47.9073, 0, 0 )
+shape = SubResource( 13 )
+
+[node name="Walls" type="StaticBody" parent="Maze"]
+
+[node name="MeshInstance" type="MeshInstance" parent="Maze/Walls"]
+transform = Transform( 0.979237, 0, -0.202719, 0, 1, 0, 0.202719, 0, 0.979237, -0.983265, 3, 15.0055 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Maze/Walls"]
+transform = Transform( 0.979237, 0, -0.202719, 0, 1, 0, 0.202719, 0, 0.979237, -0.983265, 3, 15.0055 )
+shape = SubResource( 7 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Maze/Walls"]
+transform = Transform( 0.953212, 0, 0.302303, 0, 1, 0, -0.302303, 0, 0.953212, -2.56286, 3, -19.7488 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="CollisionShape2" type="CollisionShape" parent="Maze/Walls"]
+transform = Transform( 0.953212, 0, 0.302303, 0, 1, 0, -0.302303, 0, 0.953212, -2.56286, 3, -19.7488 )
+shape = SubResource( 8 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="Maze/Walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 3, 0.0835471 )
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="CollisionShape3" type="CollisionShape" parent="Maze/Walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 3, 0.0835471 )
+shape = SubResource( 10 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="Maze/Walls"]
+transform = Transform( 0.973627, 0, 0.228147, 0, 1, 0, -0.228147, 0, 0.973627, 0, 3, -4.03195 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="CollisionShape4" type="CollisionShape" parent="Maze/Walls"]
+transform = Transform( 0.973627, 0, 0.228147, 0, 1, 0, -0.228147, 0, 0.973627, 0, 3, -4.03195 )
+shape = SubResource( 12 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="Maze/Walls"]
+transform = Transform( 0.985016, 0, -0.172462, 0, 1, 0, 0.172462, 0, 0.985016, 0, 3, 0.964997 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="CollisionShape5" type="CollisionShape" parent="Maze/Walls"]
+transform = Transform( 0.985016, 0, -0.172462, 0, 1, 0, 0.172462, 0, 0.985016, 0, 3, 0.964997 )
+shape = SubResource( 12 )
+
+[node name="MeshInstance6" type="MeshInstance" parent="Maze/Walls"]
+transform = Transform( 0.985016, 0, -0.172462, 0, 1, 0, 0.172462, 0, 0.985016, 24.309, 3, 5.21907 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="CollisionShape6" type="CollisionShape" parent="Maze/Walls"]
+transform = Transform( 0.985016, 0, -0.172462, 0, 1, 0, 0.172462, 0, 0.985016, 24.309, 3, 5.21907 )
+shape = SubResource( 12 )
+
+[node name="MeshInstance7" type="MeshInstance" parent="Maze/Walls"]
+transform = Transform( 0.985016, 0, -0.172462, 0, 1, 0, 0.172462, 0, 0.985016, 24.2965, 3, -4.71332 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="CollisionShape7" type="CollisionShape" parent="Maze/Walls"]
+transform = Transform( 0.985016, 0, -0.172462, 0, 1, 0, 0.172462, 0, 0.985016, 24.2965, 3, -4.71332 )
+shape = SubResource( 12 )
+
+[node name="MeshInstance8" type="MeshInstance" parent="Maze/Walls"]
+transform = Transform( 0.996026, 0, 0.0890681, 0, 1, 0, -0.0890681, 0, 0.996026, 48.8035, 3, -3.73379 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="CollisionShape8" type="CollisionShape" parent="Maze/Walls"]
+transform = Transform( 0.996026, 0, 0.0890681, 0, 1, 0, -0.0890681, 0, 0.996026, 48.8035, 3, -3.73379 )
+shape = SubResource( 12 )
+
+[node name="MeshInstance9" type="MeshInstance" parent="Maze/Walls"]
+transform = Transform( 0.996026, 0, 0.0890681, 0, 1, 0, -0.0890681, 0, 0.996026, 48.8035, 3, -33.2514 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="CollisionShape9" type="CollisionShape" parent="Maze/Walls"]
+transform = Transform( 0.996026, 0, 0.0890681, 0, 1, 0, -0.0890681, 0, 0.996026, 48.8035, 3, -33.2514 )
+shape = SubResource( 12 )
+
+[node name="MeshInstance10" type="MeshInstance" parent="Maze/Walls"]
+transform = Transform( 0.996026, 0, 0.0890681, 0, 1, 0, -0.0890681, 0, 0.996026, 48.8035, 3, 6.13772 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="CollisionShape10" type="CollisionShape" parent="Maze/Walls"]
+transform = Transform( 0.996026, 0, 0.0890681, 0, 1, 0, -0.0890681, 0, 0.996026, 48.8035, 3, 6.13772 )
+shape = SubResource( 12 )
+
+[node name="MeshInstance11" type="MeshInstance" parent="Maze/Walls"]
+transform = Transform( 0.996026, 0, 0.0890681, 0, 1, 0, -0.0890681, 0, 0.996026, 48.8035, 3, 21.8641 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="CollisionShape11" type="CollisionShape" parent="Maze/Walls"]
+transform = Transform( 0.996026, 0, 0.0890681, 0, 1, 0, -0.0890681, 0, 0.996026, 48.8035, 3, 21.8641 )
+shape = SubResource( 12 )
+
+[node name="Player" type="KinematicBody" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -46.5654, 0, 0 )
+script = ExtResource( 1 )
+
+[node name="Body" type="CollisionShape" parent="Player"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.25, 0 )
+shape = SubResource( 4 )
+
+[node name="Feet" type="CollisionShape" parent="Player"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0 )
+shape = SubResource( 5 )
+
+[node name="Pivot" type="Spatial" parent="Player"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0592, 0 )
+
+[node name="Camera" type="Camera" parent="Player/Pivot"]
+current = true
