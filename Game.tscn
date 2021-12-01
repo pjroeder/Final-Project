@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 
@@ -31,6 +31,18 @@ size = Vector3( 25, 6, 1 )
 
 [sub_resource type="ConvexPolygonShape" id=12]
 points = PoolVector3Array( -12.5, 3, 0.5, 12.5, 3, -0.5, 12.5, 3, 0.5, -12.5, 3, -0.5, -12.5, -3, 0.5, 12.5, -3, -0.5, 12.5, -3, 0.5, -12.5, -3, -0.5, 12.5, 3, 0.5, -12.5, 3, -0.5, 12.5, 3, -0.5, -12.5, 3, 0.5, 12.5, -3, 0.5, -12.5, -3, -0.5, 12.5, -3, -0.5, -12.5, -3, 0.5, 12.5, 3, 0.5, -12.5, -3, 0.5, -12.5, 3, 0.5, 12.5, -3, 0.5, 12.5, 3, -0.5, -12.5, -3, -0.5, -12.5, 3, -0.5, 12.5, -3, -0.5 )
+
+[sub_resource type="CubeMesh" id=14]
+size = Vector3( 1, 6, 55 )
+
+[sub_resource type="ConvexPolygonShape" id=15]
+points = PoolVector3Array( -0.5, 3, 27.5, 0.5, 3, -27.5, 0.5, 3, 27.5, -0.5, 3, -27.5, -0.5, -3, 27.5, 0.5, -3, -27.5, 0.5, -3, 27.5, -0.5, -3, -27.5, 0.5, 3, 27.5, -0.5, 3, -27.5, 0.5, 3, -27.5, -0.5, 3, 27.5, 0.5, -3, 27.5, -0.5, -3, -27.5, 0.5, -3, -27.5, -0.5, -3, 27.5, 0.5, 3, 27.5, -0.5, -3, 27.5, -0.5, 3, 27.5, 0.5, -3, 27.5, 0.5, 3, -27.5, -0.5, -3, -27.5, -0.5, 3, -27.5, 0.5, -3, -27.5 )
+
+[sub_resource type="CubeMesh" id=16]
+size = Vector3( 1, 6, 10 )
+
+[sub_resource type="ConvexPolygonShape" id=17]
+points = PoolVector3Array( -0.5, 3, 5, 0.5, 3, -5, 0.5, 3, 5, -0.5, 3, -5, -0.5, -3, 5, 0.5, -3, -5, 0.5, -3, 5, -0.5, -3, -5, 0.5, 3, 5, -0.5, 3, -5, 0.5, 3, -5, -0.5, 3, 5, 0.5, -3, 5, -0.5, -3, -5, 0.5, -3, -5, -0.5, -3, 5, 0.5, 3, 5, -0.5, -3, 5, -0.5, 3, 5, 0.5, -3, 5, 0.5, 3, -5, -0.5, -3, -5, -0.5, 3, -5, 0.5, -3, -5 )
 
 [sub_resource type="CapsuleShape" id=4]
 radius = 0.5
@@ -154,6 +166,71 @@ material/0 = null
 [node name="CollisionShape11" type="CollisionShape" parent="Maze/Walls"]
 transform = Transform( 0.996026, 0, 0.0890681, 0, 1, 0, -0.0890681, 0, 0.996026, 48.8035, 3, 21.8641 )
 shape = SubResource( 12 )
+
+[node name="MeshInstance17" type="MeshInstance" parent="Maze/Walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 83.7935, 3, -6.6478 )
+mesh = SubResource( 14 )
+material/0 = null
+
+[node name="CollisionShape17" type="CollisionShape" parent="Maze/Walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 83.7935, 3, -6.6478 )
+shape = SubResource( 15 )
+
+[node name="MeshInstance13" type="MeshInstance" parent="Maze/Walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60.7553, 3, 0 )
+mesh = SubResource( 16 )
+material/0 = null
+
+[node name="CollisionShape13" type="CollisionShape" parent="Maze/Walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60.7553, 3, 0 )
+shape = SubResource( 17 )
+
+[node name="MeshInstance14" type="MeshInstance" parent="Maze/Walls"]
+transform = Transform( 0.999432, 0, 0.0336959, 0, 1, 0, -0.0336959, 0, 0.999432, 72.0966, 3, -0.165872 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="CollisionShape14" type="CollisionShape" parent="Maze/Walls"]
+transform = Transform( 0.999432, 0, 0.0336959, 0, 1, 0, -0.0336959, 0, 0.999432, 72.0966, 3, -0.165872 )
+shape = SubResource( 12 )
+
+[node name="MeshInstance15" type="MeshInstance" parent="Maze/Walls"]
+transform = Transform( 0.999432, 0, 0.0336959, 0, 1, 0, -0.0336959, 0, 0.999432, 72.0966, 3, 20.533 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="CollisionShape15" type="CollisionShape" parent="Maze/Walls"]
+transform = Transform( 0.999432, 0, 0.0336959, 0, 1, 0, -0.0336959, 0, 0.999432, 72.0966, 3, 20.533 )
+shape = SubResource( 12 )
+
+[node name="MeshInstance16" type="MeshInstance" parent="Maze/Walls"]
+transform = Transform( 0.999432, 0, 0.0336959, 0, 1, 0, -0.0336959, 0, 0.999432, 72.0966, 3, -34.3587 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="CollisionShape16" type="CollisionShape" parent="Maze/Walls"]
+transform = Transform( 0.999432, 0, 0.0336959, 0, 1, 0, -0.0336959, 0, 0.999432, 72.0966, 3, -34.3587 )
+shape = SubResource( 12 )
+
+[node name="CSGBox" type="CSGBox" parent="Maze/Walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 59.8003, 3, -6.59569 )
+width = 1.0
+height = 6.0
+depth = 55.0
+
+[node name="CSGBox" type="CSGBox" parent="Maze/Walls/CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.720376, -12.6116 )
+operation = 2
+width = 3.0
+height = 5.0
+depth = 10.0
+
+[node name="CSGBox2" type="CSGBox" parent="Maze/Walls/CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.650962, 19.2238 )
+operation = 2
+width = 3.0
+height = 5.0
+depth = 6.0
 
 [node name="Player" type="KinematicBody" parent="."]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -46.5654, 0, 0 )
