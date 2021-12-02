@@ -9,7 +9,7 @@ Objective:
 Game-play instructions: W,A,S,D to move, mouse for camera movement.
 
 ## Impediments
-
+Could not get the menu function to work even after following tutorials
 
 ## Implementation
 Created in Godot 3.3.3
@@ -20,4 +20,4 @@ FPS Maze project
 ## Future Development
 None
 # Created by: PRHY
-Peyton Roeder, 
+Peyton Roeder
