@@ -3,7 +3,7 @@ extends KinematicBody
 onready var Camera = $Pivot/Camera
 
 var gravity = -30
-var max_speed = 8
+var max_speed = 16
 var mouse_sensitivity = 0.002
 var mouse_range = 1.2
 
@@ -21,6 +21,9 @@ func get_input():
 		input_dir += Camera.global_transform.basis.x
 	input_dir = input_dir.normalized()
 	return input_dir
+
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
