@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Crosshair Sprite.png" type="Texture" id=2]
@@ -8,11 +8,14 @@
 [ext_resource path="res://Assets/texture_rock_ao.png" type="Texture" id=6]
 [ext_resource path="res://Assets/texture_rock_metal.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Untitled.png" type="Texture" id=8]
+[ext_resource path="res://Assets/texture_wood.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sign Text.png" type="Texture" id=10]
+[ext_resource path="res://Assets/sign text 2.png" type="Texture" id=11]
 
-[sub_resource type="PlaneMesh" id=1]
-size = Vector2( 200, 100 )
+[sub_resource type="PlaneMesh" id=19]
+size = Vector2( 140, 60 )
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="SpatialMaterial" id=20]
 albedo_texture = ExtResource( 4 )
 metallic = 0.86
 metallic_texture = ExtResource( 7 )
@@ -33,8 +36,16 @@ depth_flip_binormal = false
 depth_texture = ExtResource( 5 )
 uv1_scale = Vector3( 50, 50, 1 )
 
-[sub_resource type="ConvexPolygonShape" id=3]
-points = PoolVector3Array( 100, 0, 50, -100, 0, 50, 100, 0, -50, -100, 0, -50 )
+[sub_resource type="SpatialMaterial" id=21]
+albedo_texture = ExtResource( 9 )
+metallic = 0.48
+roughness = 0.28
+
+[sub_resource type="SpatialMaterial" id=22]
+albedo_color = Color( 0.627451, 0.588235, 0.588235, 1 )
+albedo_texture = ExtResource( 9 )
+metallic = 0.48
+roughness = 0.28
 
 [sub_resource type="CubeMesh" id=4]
 size = Vector3( 100, 6, 1 )
@@ -52,13 +63,13 @@ size = Vector3( 1, 6, 10 )
 points = PoolVector3Array( -0.5, 3, 5, 0.5, 3, -5, 0.5, 3, 5, -0.5, 3, -5, -0.5, -3, 5, 0.5, -3, -5, 0.5, -3, 5, -0.5, -3, -5, 0.5, 3, 5, -0.5, 3, -5, 0.5, 3, -5, -0.5, 3, 5, 0.5, -3, 5, -0.5, -3, -5, 0.5, -3, -5, -0.5, -3, 5, 0.5, 3, 5, -0.5, -3, 5, -0.5, 3, 5, 0.5, -3, 5, 0.5, 3, -5, -0.5, -3, -5, -0.5, 3, -5, 0.5, -3, -5 )
 
 [sub_resource type="CubeMesh" id=9]
-size = Vector3( 25, 6, 1 )
+size = Vector3( 25, 20, 1 )
 
 [sub_resource type="ConvexPolygonShape" id=10]
 points = PoolVector3Array( -12.5, 3, 0.5, 12.5, 3, -0.5, 12.5, 3, 0.5, -12.5, 3, -0.5, -12.5, -3, 0.5, 12.5, -3, -0.5, 12.5, -3, 0.5, -12.5, -3, -0.5, 12.5, 3, 0.5, -12.5, 3, -0.5, 12.5, 3, -0.5, -12.5, 3, 0.5, 12.5, -3, 0.5, -12.5, -3, -0.5, 12.5, -3, -0.5, -12.5, -3, 0.5, 12.5, 3, 0.5, -12.5, -3, 0.5, -12.5, 3, 0.5, 12.5, -3, 0.5, 12.5, 3, -0.5, -12.5, -3, -0.5, -12.5, 3, -0.5, 12.5, -3, -0.5 )
 
 [sub_resource type="CubeMesh" id=11]
-size = Vector3( 1, 6, 55 )
+size = Vector3( 1, 20, 55 )
 
 [sub_resource type="ConvexPolygonShape" id=12]
 points = PoolVector3Array( -0.5, 3, 27.5, 0.5, 3, -27.5, 0.5, 3, 27.5, -0.5, 3, -27.5, -0.5, -3, 27.5, 0.5, -3, -27.5, 0.5, -3, 27.5, -0.5, -3, -27.5, 0.5, 3, 27.5, -0.5, 3, -27.5, 0.5, 3, -27.5, -0.5, 3, 27.5, 0.5, -3, 27.5, -0.5, -3, -27.5, 0.5, -3, -27.5, -0.5, -3, 27.5, 0.5, 3, 27.5, -0.5, -3, 27.5, -0.5, 3, 27.5, 0.5, -3, 27.5, 0.5, 3, -27.5, -0.5, -3, -27.5, -0.5, 3, -27.5, 0.5, -3, -27.5 )
@@ -87,16 +98,57 @@ background_sky = SubResource( 17 )
 
 [node name="Maze" type="Spatial" parent="."]
 
-[node name="Ground" type="StaticBody" parent="Maze"]
+[node name="Ground" type="CSGMesh" parent="Maze"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8018, 0, -6.05166 )
+use_collision = true
+mesh = SubResource( 19 )
+material = SubResource( 20 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Maze/Ground"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 47.9073, 0, 0 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 2 )
+[node name="Hole in Floor" type="CSGBox" parent="Maze/Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 53.902, 0, 16.2259 )
+operation = 2
+width = 20.0
+depth = 15.0
 
-[node name="CollisionShape" type="CollisionShape" parent="Maze/Ground"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 47.9073, 0, 0 )
-shape = SubResource( 3 )
+[node name="Sign" type="CSGBox" parent="Maze/Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 43.0835, 1.58393, 18.5675 )
+width = 0.1
+height = 1.0
+material = SubResource( 21 )
+
+[node name="Sign pole" type="CSGBox" parent="Maze/Ground/Sign"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.965042, 0 )
+width = 0.1
+height = 1.2
+depth = 0.1
+material = SubResource( 22 )
+
+[node name="Sprite3D" type="Sprite3D" parent="Maze/Ground/Sign"]
+transform = Transform( -6.55671e-09, 0, -1, 0, 0.13, 0, 0.15, 0, -4.37114e-08, -0.0544968, 0, 0 )
+texture = ExtResource( 10 )
+
+[node name="Sign2" type="CSGBox" parent="Maze/Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 57.2266, -12.1953, 16.71 )
+width = 0.1
+height = 1.0
+material = SubResource( 21 )
+
+[node name="Sign pole" type="CSGBox" parent="Maze/Ground/Sign2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.965042, 0 )
+width = 0.1
+height = 1.2
+depth = 0.1
+material = SubResource( 22 )
+
+[node name="Sprite3D" type="Sprite3D" parent="Maze/Ground/Sign2"]
+transform = Transform( -6.55671e-09, 0, -1, 0, 0.13, 0, 0.15, 0, -4.37114e-08, -0.0544968, 0, 0 )
+texture = ExtResource( 11 )
+
+[node name="Ground2" type="CSGMesh" parent="Maze"]
+transform = Transform( 0.2, 0, 0, 0, 1, 0, 0, 0, 0.4, 71.1501, -13.7413, 10.1567 )
+use_collision = true
+mesh = SubResource( 19 )
+material = SubResource( 20 )
 
 [node name="Walls" type="StaticBody" parent="Maze"]
 
@@ -128,7 +180,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 3, 0.0835471 )
 shape = SubResource( 8 )
 
 [node name="MeshInstance4" type="MeshInstance" parent="Maze/Walls"]
-transform = Transform( 0.973627, 0, 0.228147, 0, 1, 0, -0.228147, 0, 0.973627, 0, 3, -4.03195 )
+transform = Transform( 0.973627, 0, 0.228147, 0, 1, 0, -0.228147, 0, 0.973627, 0, -4, -4.032 )
 mesh = SubResource( 9 )
 material/0 = null
 
@@ -137,7 +189,7 @@ transform = Transform( 0.973627, 0, 0.228147, 0, 1, 0, -0.228147, 0, 0.973627, 0
 shape = SubResource( 10 )
 
 [node name="MeshInstance5" type="MeshInstance" parent="Maze/Walls"]
-transform = Transform( 0.985016, 0, -0.172462, 0, 1, 0, 0.172462, 0, 0.985016, 0, 3, 0.964997 )
+transform = Transform( 0.985016, 0, -0.172462, 0, 1, 0, 0.172462, 0, 0.985016, 0, -4, 0.965 )
 mesh = SubResource( 9 )
 material/0 = null
 
@@ -146,7 +198,7 @@ transform = Transform( 0.985016, 0, -0.172462, 0, 1, 0, 0.172462, 0, 0.985016, 0
 shape = SubResource( 10 )
 
 [node name="MeshInstance6" type="MeshInstance" parent="Maze/Walls"]
-transform = Transform( 0.985016, 0, -0.172462, 0, 1, 0, 0.172462, 0, 0.985016, 24.309, 3, 5.21907 )
+transform = Transform( 0.985016, 0, -0.172462, 0, 1, 0, 0.172462, 0, 0.985016, 24.309, -4, 5.219 )
 mesh = SubResource( 9 )
 material/0 = null
 
@@ -155,7 +207,7 @@ transform = Transform( 0.985016, 0, -0.172462, 0, 1, 0, 0.172462, 0, 0.985016, 2
 shape = SubResource( 10 )
 
 [node name="MeshInstance7" type="MeshInstance" parent="Maze/Walls"]
-transform = Transform( 0.985016, 0, -0.172462, 0, 1, 0, 0.172462, 0, 0.985016, 24.2965, 3, -4.71332 )
+transform = Transform( 0.985016, 0, -0.172462, 0, 1, 0, 0.172462, 0, 0.985016, 24.296, -4, -4.713 )
 mesh = SubResource( 9 )
 material/0 = null
 
@@ -164,7 +216,7 @@ transform = Transform( 0.985016, 0, -0.172462, 0, 1, 0, 0.172462, 0, 0.985016, 2
 shape = SubResource( 10 )
 
 [node name="MeshInstance8" type="MeshInstance" parent="Maze/Walls"]
-transform = Transform( 0.996026, 0, 0.0890681, 0, 1, 0, -0.0890681, 0, 0.996026, 48.8035, 3, -3.73379 )
+transform = Transform( 0.996026, 0, 0.0890681, 0, 1, 0, -0.0890681, 0, 0.996026, 48.804, -4, -3.734 )
 mesh = SubResource( 9 )
 material/0 = null
 
@@ -173,7 +225,7 @@ transform = Transform( 0.996026, 0, 0.0890681, 0, 1, 0, -0.0890681, 0, 0.996026,
 shape = SubResource( 10 )
 
 [node name="MeshInstance9" type="MeshInstance" parent="Maze/Walls"]
-transform = Transform( 0.996026, 0, 0.0890681, 0, 1, 0, -0.0890681, 0, 0.996026, 48.8035, 3, -33.2514 )
+transform = Transform( 0.996026, 0, 0.0890681, 0, 1, 0, -0.0890681, 0, 0.996026, 48.804, -4, -33.251 )
 mesh = SubResource( 9 )
 material/0 = null
 
@@ -182,7 +234,7 @@ transform = Transform( 0.996026, 0, 0.0890681, 0, 1, 0, -0.0890681, 0, 0.996026,
 shape = SubResource( 10 )
 
 [node name="MeshInstance10" type="MeshInstance" parent="Maze/Walls"]
-transform = Transform( 0.996026, 0, 0.0890681, 0, 1, 0, -0.0890681, 0, 0.996026, 48.8035, 3, 6.13772 )
+transform = Transform( 0.996026, 0, 0.0890681, 0, 1, 0, -0.0890681, 0, 0.996026, 48.8068, -4.06737, 6.18466 )
 mesh = SubResource( 9 )
 material/0 = null
 
@@ -191,7 +243,7 @@ transform = Transform( 0.996026, 0, 0.0890681, 0, 1, 0, -0.0890681, 0, 0.996026,
 shape = SubResource( 10 )
 
 [node name="MeshInstance11" type="MeshInstance" parent="Maze/Walls"]
-transform = Transform( 0.996026, 0, 0.0890681, 0, 1, 0, -0.0890681, 0, 0.996026, 48.8035, 3, 21.8641 )
+transform = Transform( 0.996026, 0, 0.0890681, 0, 1, 0, -0.0890681, 0, 0.996026, 48.804, -4, 21.864 )
 mesh = SubResource( 9 )
 material/0 = null
 
@@ -200,12 +252,12 @@ transform = Transform( 0.996026, 0, 0.0890681, 0, 1, 0, -0.0890681, 0, 0.996026,
 shape = SubResource( 10 )
 
 [node name="MeshInstance17" type="MeshInstance" parent="Maze/Walls"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 83.7935, 3, -6.6478 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 83.794, -4, -6.648 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape17" type="CollisionShape" parent="Maze/Walls"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 83.7935, 3, -6.6478 )
+transform = Transform( 1, 0, 0, 0, 3.25, 0, 0, 0, 1, 83.794, -4, -6.648 )
 shape = SubResource( 12 )
 
 [node name="MeshInstance13" type="MeshInstance" parent="Maze/Walls"]
@@ -218,25 +270,25 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60.7553, 3, 0 )
 shape = SubResource( 14 )
 
 [node name="MeshInstance14" type="MeshInstance" parent="Maze/Walls"]
-transform = Transform( 0.999432, 0, 0.0336959, 0, 1, 0, -0.0336959, 0, 0.999432, 72.0966, 3, -0.165872 )
+transform = Transform( 0.999432, 0, 0.0336959, 0, 1, 0, -0.0336959, 0, 0.999432, 72.097, -4, -0.166 )
 mesh = SubResource( 9 )
 material/0 = null
 
 [node name="CollisionShape14" type="CollisionShape" parent="Maze/Walls"]
-transform = Transform( 0.999432, 0, 0.0336959, 0, 1, 0, -0.0336959, 0, 0.999432, 72.0966, 3, -0.165872 )
+transform = Transform( 0.999432, 0, 0.0336959, 0, 3.25, 0, -0.0336959, 0, 0.999432, 72.097, -4, -0.166 )
 shape = SubResource( 10 )
 
 [node name="MeshInstance15" type="MeshInstance" parent="Maze/Walls"]
-transform = Transform( 0.999432, 0, 0.0336959, 0, 1, 0, -0.0336959, 0, 0.999432, 72.0966, 3, 20.533 )
+transform = Transform( 0.999432, 0, 0.0336959, 0, 1, 0, -0.0336959, 0, 0.999432, 72.097, -4, 20.533 )
 mesh = SubResource( 9 )
 material/0 = null
 
 [node name="CollisionShape15" type="CollisionShape" parent="Maze/Walls"]
-transform = Transform( 0.999432, 0, 0.0336959, 0, 1, 0, -0.0336959, 0, 0.999432, 72.0966, 3, 20.533 )
+transform = Transform( 0.999432, 0, 0.0336959, 0, 3.25, 0, -0.0336959, 0, 0.999432, 72.0966, -3.80546, 20.533 )
 shape = SubResource( 10 )
 
 [node name="MeshInstance16" type="MeshInstance" parent="Maze/Walls"]
-transform = Transform( 0.999432, 0, 0.0336959, 0, 1, 0, -0.0336959, 0, 0.999432, 72.0966, 3, -34.3587 )
+transform = Transform( 0.999432, 0, 0.0336959, 0, 1, 0, -0.0336959, 0, 0.999432, 72.097, -4, -34.359 )
 mesh = SubResource( 9 )
 material/0 = null
 
@@ -245,21 +297,21 @@ transform = Transform( 0.999432, 0, 0.0336959, 0, 1, 0, -0.0336959, 0, 0.999432,
 shape = SubResource( 10 )
 
 [node name="CSGBox" type="CSGBox" parent="Maze/Walls"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 59.8003, 3, -6.59569 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 59.8, -4, -6.596 )
 use_collision = true
 width = 1.0
-height = 6.0
+height = 20.0
 depth = 55.0
 
 [node name="CSGBox" type="CSGBox" parent="Maze/Walls/CSGBox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.720376, -12.6116 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.03467, -12.6116 )
 operation = 2
 width = 3.0
 height = 5.0
 depth = 10.0
 
 [node name="CSGBox2" type="CSGBox" parent="Maze/Walls/CSGBox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.650962, 19.2238 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.32144, 19.2238 )
 operation = 2
 width = 3.0
 height = 5.0
