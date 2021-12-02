@@ -2,22 +2,22 @@
 MSCH-C220 Game Jam, December 2, 2021
 
 ## Theme
-How you thought about or interpreted the theme
+The given theme was "Choose your poison" so I did the basic understanding of the phrase and chose to have seperate paths that the player can choose from.
 
 ## Game Play
-Objective
-Game-play instructions
+Objective: 
+Game-play instructions: W,A,S,D to move, mouse for camera movement.
 
 ## Impediments
-Struggles or surprises you encountered during the development of the game
+Could not get the menu function to work even after following tutorials
 
 ## Implementation
-Features
-Assets, or resources used
+Created in Godot 3.3.3
+Sky texture created in MS Paint
 
 ## References
-
+FPS Maze project
 ## Future Development
-
+None
 # Created by: PRHY
-Peyton Roeder, 
+Peyton Roeder
