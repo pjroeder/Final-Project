@@ -20,4 +20,4 @@ FPS Maze project tutorials
 ## Future Development
 None
 # Created by: PRHY
-Peyton Roeder, 
+Peyton Roeder, Henry Yang
